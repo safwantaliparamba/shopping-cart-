@@ -1,0 +1,61 @@
+<% layout('adminbp') -%>
+
+<section class=" container" style="margin-top:5em">
+  <div class="">
+    <a href="/admin/products/new" class="btn btn-primary">create new product</a>
+</div>
+  <div class="text-center mb-3">
+    <h1>All products</h1>
+  </div>
+  <div class="">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">image</th>
+          <th scope="col">product name</th>
+          <th scope="col">price</th>
+          <th scope="col">description</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% count=1 %> 
+        <% for(product of allProducts){ %> 
+            <tr>
+              <th><%= count++ %> </th>
+              <td><img src="<%= product.image %>" alt="" style="max-width: 3em;" lazy></td>
+              <td><%= product.name %></td>
+              <td>$<%= product.price %></td>
+              <td><%= product.description %></td>
+              <td><a href="/admin/products/<%= product._id%>/edit" class="btn btn-success">edit</a></td>
+              <td><a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</a></td>
+            </tr>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure , you want to confirm delete this product?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    <form action="/admin/products/<%= product._id%>/delete?_method=delete" method="post">
+                      <button type="submit" class="btn btn-danger">delete product</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <% } %>
+
+
+      </tbody>
+    </table>
+  </div>
+</section>

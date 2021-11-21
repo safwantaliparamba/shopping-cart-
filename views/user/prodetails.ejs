@@ -1,0 +1,12 @@
+<% layout('bplate') -%>
+<section class="container" style="margin-top:5em">
+    <div>
+        <img src="<%=product.image  %> " alt="<%=product.name  %>" style="max-width:25rem"> 
+        <h1><%=product.name  %></h1>
+        <h5><%=product.price  %></h5>
+        <p><%=product.description  %></p>
+
+        <a href="/" class="btn btn-success">buy now</a>
+        <a href="/" class="btn btn-warning">add to cart</a>
+    </div>
+</section>

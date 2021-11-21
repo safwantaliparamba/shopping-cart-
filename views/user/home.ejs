@@ -1,0 +1,25 @@
+<% layout('bplate') -%>
+<div class="text-center mb-5"style="margin-top:8em">
+<h1 >ALL PRODUCTS</h1>
+</div>
+
+<div class="container">
+    <div class="row ">
+      <% for(let product of allProducts){ %> 
+          <div class="card col-md-4 m-auto mb-4 d-flex" style="width: 18rem;">
+            <img class="card-img-top pt-2" src="<%=product.image%>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%=product.name%>  </h5>
+              <h5 class="card-text">$<%=product.price%>  </h5>
+              <p class="card-text text-muted lengthedit"><%=product.description%></p>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+              <a href="/product/<%=product._id%>" class="btn btn-success">view product</a>
+            </div>
+        </div>
+        <!-- </a> -->
+        <% } %> 
+          
+          
+    </div>
+</div>
+
