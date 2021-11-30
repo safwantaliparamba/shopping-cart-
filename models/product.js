@@ -2,10 +2,23 @@ const mongoose = require("mongoose");
 const configuration = require("../db/config");
 
 const productSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  description: String,
-  image: String,
+  name: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required:true,
+    min:0
+  },
+  description: {
+     type: String, 
+     required: true
+   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
@@ -13,7 +26,7 @@ const Product = mongoose.model("Product", productSchema);
 module.exports = Product;
 
 // Product.insertMany([
- 
+
 //   {
 //     name: "TCL 20 PRO 5g",
 //     price: 799,
